@@ -38,7 +38,7 @@ app.use('/api/posts',require('./routes/post'));
 app.use('/api/teams',require('./routes/team'));
 app.use('/api/tournaments',require('./routes/tournament'));
 
-const port=5000;
+var port = process.env.PORT || 8000;
 const dbUri = require('./config/keys').mongoURI
 //Global
 
