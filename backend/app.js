@@ -1,7 +1,7 @@
 const express = require('express')
-const expressLayouts = require('express-ejs-layouts')
+
 const expressSession=require('express-session');
-const flash=require('connect-flash');
+
 const passport = require('passport');
 require('./config/passport')(passport);
 require('dotenv').config()
@@ -10,9 +10,7 @@ const connectDb=require('./db/connect.js')
 
 const app = express()
 
-//ejs
-app.use(expressLayouts)
-app.set('view engine', 'ejs')
+
 
 // DB config
 
@@ -26,21 +24,24 @@ app.use(expressSession({
 }))
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(flash())
+
 
 //route
 app.use(express.json());
-app.use('/',require('./routes/index'))
-app.use('/users',require('./routes/users'))
+app.use('/api/users',require('./routes/users'));
+app.use('/api/gears',require('./routes/gear'));
+app.use('/api/categories',require('./routes/category'));
+app.use('/api/menus',require('./routes/menu'));
+app.use('/api/roles',require('./routes/role'));
+app.use('/api/results',require('./routes/result'));
+app.use('/api/posts',require('./routes/post'));
+app.use('/api/teams',require('./routes/team'));
+app.use('/api/tournaments',require('./routes/tournament'));
+
 const port=5000;
 const dbUri = require('./config/keys').mongoURI
 //Global
-app.use((req,res,next)=>{
-    res.locals.success_msg=req.flash('success_msg')
-    res.locals.error_msg=req.flash('error_msg')
-    res.locals.error=req.flash('error')
-    next()
-})
+
 const start=async()=>{
     try{
         await connectDb(dbUri);

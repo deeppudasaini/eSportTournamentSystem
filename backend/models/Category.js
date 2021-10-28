@@ -16,10 +16,7 @@ const CategorySchema=new mongoose.Schema({
         type:String,
 
     },
-    slug:{
-        type:String,
-        unique:true,
-    },
+    
     created_at:{
         type:Date,
         default:Date.now,

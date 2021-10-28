@@ -1,11 +1,19 @@
 const express =require('express')
-const {registerUser,login}=require('../controllers/Users')
-const router = express.Router()
-router.get('/login',(req,res)=>{
-    res.render('login')
-    }).post('/login',login)
-router.get('/register',(req,res)=>{
-        res.render('register')
-        }).post('/register',registerUser)
+const {afterAuthenticated}=require('../config/auth')
+const { getAllUsers,
+    registerUser,
+    getSingleUser,
+    updateUser,
+    deleteUsers,
+    login,
+    getLoggedInUser,
+    logout}=require('../controllers/Users')
+const userRouter = express.Router()
 
-module.exports = router
+userRouter.post('/login',login)
+userRouter.post('/register',registerUser)
+userRouter.get('/logout',logout)
+userRouter.route('/',afterAuthenticated).get(getLoggedInUser)
+userRouter.route('/:id',afterAuthenticated).get(getSingleUser).put(updateUser).delete(deleteUsers)
+
+module.exports = userRouter

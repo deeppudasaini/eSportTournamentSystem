@@ -1,5 +1,6 @@
 const User=require('../models/User');
 const bcrypt=require('bcryptjs')
+const passport = require('passport');
 const getAllUsers=async (req,res)=>{
     const users=await User.find().then(users=>{
         res.json(users);
@@ -12,7 +13,7 @@ const registerUser=async (req,res)=>{
     
     const {name,email,password}=req.body;
     let errors=[];
-    let success_msg=[];
+    
     if(!name || !email || !password){
         errors.push({msg:'Please enter all fields'});
     }
@@ -40,15 +41,12 @@ const registerUser=async (req,res)=>{
                         if(err) throw err;
                         newUser.password=hash;
                         newUser.save().then(user=>{
-                            req.flash(
-                                'success_msg',
-                                'You are now registered and can log in'
-                              );
-                            res.redirect('/users/login');
                             res.json(user);
-                            res.send(user);
+                            
+                            
                         }).catch(err=>{
                             res.status(500).json(err);
+                            
                         });
                     });
                 });
@@ -61,12 +59,22 @@ const registerUser=async (req,res)=>{
     
 }
 const login=async(req,res,next)=>{
-    passport.authenticate('local',{
-        successRedirect:'/dashboard',
-        failureRedirect:'/users/login',
-        failureFlash:true
-    })(req,res,next);
+   passport.authenticate('local',{
+         successRedirect:'/api/user',
+        failureRedirect:'/api/login',
+            failureFlash:false
+   })(req,res,next);
 }
+const logout=async (req,res)=>{
+    req.logout();
+    res.json({msg:'Logout Successful'});
+
+}
+const getLoggedInUser=async (req,res)=>{
+    res.json(req.user);
+}
+
+
 const getSingleUser=async (req,res)=>{
     const user=await User.findById(req.params.userId).then(user=>{
         res.json(user);
@@ -95,5 +103,7 @@ module.exports={
     getSingleUser,
     updateUser,
     deleteUsers,
-    login
+    login,
+    getLoggedInUser,
+    logout
 }
