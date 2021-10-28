@@ -31,7 +31,7 @@ app.use(express.json());
 app.use('/api/users',require('./routes/users'));
 app.use('/api/gears',require('./routes/gear'));
 app.use('/api/categories',require('./routes/category'));
-app.use('/api/menus',require('./routes/menu'));
+app.use('/api/streams',require('./routes/stream'));
 app.use('/api/roles',require('./routes/role'));
 app.use('/api/results',require('./routes/result'));
 app.use('/api/posts',require('./routes/post'));

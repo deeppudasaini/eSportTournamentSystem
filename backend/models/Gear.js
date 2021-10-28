@@ -18,9 +18,7 @@ const GearSchema=new mongoose.Schema({
     price:{
         type:Number,
     },
-    link:{
-        type:String,
-    },
+    
     
     created_at:{
         type:Date,

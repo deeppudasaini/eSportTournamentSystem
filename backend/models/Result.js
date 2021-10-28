@@ -16,13 +16,12 @@ const ResultSchema=new mongoose.Schema({
         required:true,
     },
     status:{
-        type:String,
-        required:true,
+        type:Boolean,
+        default:false,
     },
     tournament_id:{
         type:mongoose.Schema.Types.ObjectId,
         ref:'Tournament',
-
     },
     team_a_id:{
         type:mongoose.Schema.Types.ObjectId,
@@ -48,7 +47,6 @@ const ResultSchema=new mongoose.Schema({
         type:Date,
         default:Date.now,
     },
-
 })
 
 module.exports=mongoose.model('Result',ResultSchema);

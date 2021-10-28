@@ -1,5 +1,5 @@
 const mongoose=require('mongoose');
-const MenuSchema=new mongoose.Schema({
+const StreamSchema=new mongoose.Schema({
     id:{
         type:mongoose.Schema.Types.ObjectId,
     },
@@ -9,7 +9,11 @@ const MenuSchema=new mongoose.Schema({
         type:String,
         unique:true
     },
-    
+    link:{
+        type:String,
+        unique:true,
+        required:true
+    },
     created_at:{
         type:Date,
         default:Date.now,
@@ -21,4 +25,4 @@ const MenuSchema=new mongoose.Schema({
 
 })
 
-module.exports=mongoose.model('Menu',MenuSchema);
+module.exports=mongoose.model('Stream',StreamSchema);

@@ -38,8 +38,8 @@ const TournamentScheme = new mongoose.Schema({
 
     },
     status:{
-        type: String,
-        required: true
+        type: Boolean,
+        default: false
     },
     created_at:{
         type: Date,

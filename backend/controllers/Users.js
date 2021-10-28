@@ -59,15 +59,22 @@ const registerUser=async (req,res)=>{
     
 }
 const login=async(req,res,next)=>{
-   passport.authenticate('local',{
-         successRedirect:'/api/user',
-        failureRedirect:'/api/login',
-            failureFlash:false
-   })(req,res,next);
+   passport.authenticate('local',
+    {
+        successRedirect:'/api/users/me',
+        failureRedirect:'/api/users/login',
+        failureFlash:false
+    }
+   )(req,res,next);
 }
 const logout=async (req,res)=>{
-    req.logout();
-    res.json({msg:'Logout Successful'});
+    if(req.user){
+        req.logout();
+        res.json({msg:'Logged out'});
+    }
+    else{
+        res.json({msg:'Not logged in'});
+    }
 
 }
 const getLoggedInUser=async (req,res)=>{

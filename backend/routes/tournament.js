@@ -1,4 +1,5 @@
 const express=require('express');
+const {afterAuthenticated,checkAuthenticated}=require('../config/auth')
 const tournamentRouter=express.Router();
 const{getAllTournaments,
     createTournaments,

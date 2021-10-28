@@ -7,7 +7,7 @@ const CategorySchema=new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:'Category'
     },
-    order:{
+    status:{
         type:Number,
         default:1,
 
