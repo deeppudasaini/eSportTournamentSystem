@@ -1,15 +1,15 @@
 import List from "../../../components/CRUD/List";
 import {useState, useEffect,useMemo} from "react";
 import axios from "../../../Request/axios";
-export default function AdminTeams() {
+export default function AdminResult() {
   const [news, setNews] = useState([]);
   
  useEffect(() => {
-  axios.get("/teams").then(res => {
+  axios.get("/results").then(res => {
     setNews(res.data);
   });
 },[])
-const columns = useMemo(() => 
+const a = useMemo(() => 
 {
   return [
     
@@ -20,54 +20,55 @@ const columns = useMemo(() =>
       filterable: true
     },
     {
-      Header: "About",
-      accessor: "about",
+      Header: "Description",
+      accessor: "description",
       width: 500,
       filterable: true
     },
     {
-      Header: "Logo",
-      accessor: "logo",
+      Header: "Remarks",
+      accessor: "remarks",
       width: 500,
       filterable: true,
-      Cell:props=>{
-        return (
-          <div className="flex items-center px-4 py-2">
-        <div className="flex-shrink-0 bg-gray-200 rounded-full p-2">
-          <img
-            className="h-12 w-12 rounded-full"
-            src={props.value}
-            alt=""
-          />
-        </div>
-      </div>
-        )
-      }
+     
     },
     {
-      Header: "Founding Date",
-      accessor: "founding_date",
+      Header: "Status",
+      accessor: "status",
       width: 500,
       filterable: true
     },
     {
-      Header: "Win",
-      accessor: "wins",
-      width: 500,
-      filterable: true
-    },
-    {
-      Header: "Loss",
-      accessor: "loses",
-      width: 500,
-      filterable: true
-    },
-    {
-      Header: "Total Games",
-      accessor: "total_game",
-      width: 500,
-      filterable: true
-    },
+        Header: "Tournament",
+        accessor: "tournament_id",
+        width: 500,
+        filterable: true
+      },
+      {
+        Header: "Team A",
+        accessor: "team_a_id",
+        
+        filterable: true
+      },
+      {
+        Header: "Team B",
+        accessor: "team_b_id",
+        
+        filterable: true
+      },
+      {
+        Header: "Team A Score",
+        accessor: "team_a_score",
+        
+        filterable: true
+      },
+      {
+        Header: "Team B Score",
+        accessor: "team_b_score",
+        
+        filterable: true
+      },
+      
     {
       Header: "Action",
       accessor: "",
@@ -95,7 +96,7 @@ const columns = useMemo(() =>
 )
   return (
     <div>
-      <List title="Teams" data={news} columns={columns}/>
+      <List title="Results" data={news} columns={a}/>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import "./List.css";
-import { useState,useEffect } from "react";
+import { useState } from "react";
 import Add from "./Add";
-import ReactTable from "react-table";  
+import Table from "./Table";
 
 export default function List(props) {
   const [add, setAdd] = useState(false);
@@ -50,24 +50,7 @@ export default function List(props) {
                   </div>
                 </div>
             @endif */}
-            {/* {
-              test.map(item => (
-                <div className="flex items-center px-4 py-2">
-                  <div className="flex-shrink-0 bg-gray-200 rounded-full p-2">
-                    <img
-                      className="h-12 w-12 rounded-full"
-                      src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                      alt=""
-                    />
-                  </div>
-                  <div className="ml-4">
-                    <p className="text-sm leading-5 font-medium text-gray-900">
-                      {item.name}
-                    </p>
-                    </div>
-                </div>
-              ))
-            } */}
+            
 
               
             
@@ -79,63 +62,13 @@ export default function List(props) {
             >
               Create New {props.title}
             </button>
-            {renderAdd()}
-            {/* <table className="table-fixed w-full font-serif">
-              <thead>
-                <tr className="bg-gray-100">
-                {attribute.map(item=>(
-                    <th className="px-4 py-2">{item}</th>
-                  ))}
-                  <th className="px-4 py-2">Action</th>
-                
-                </tr>
-              </thead>
-              <tbody>
-                
-
-                
-
-                <tr>
-               
-                
-                 
-                  <td className="border px-4 py-2">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                      Edit
-                    </button>
-                    <button className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-                
-              </tbody>
-            </table> */}
-            <ReactTable 
-              data={props.data}
-              columns={[
-                {
-                  Header: "Name",
-                  accessor: "name",
-                
-                },
-                {
-                  Header: "Email",
-                  accessor: "email",
-                },
-                {
-                  Header: "Phone",
-                  accessor: "phone",
-                },
-                {
-                  Header: "Action",
-                  accessor: "action",
-                }  
-              ]}
-              defaultPageSize={10}
-            />
-
             
+            {renderAdd()}
+            <Table
+              data={props.data}
+              columns={props.columns}
+              />
+              
           </div>
         </div>
       </div>

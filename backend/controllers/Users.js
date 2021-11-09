@@ -11,7 +11,7 @@ const getAllUsers=async (req,res)=>{
 }
 const registerUser=async (req,res)=>{
     
-    const {name,email,password}=req.body;
+    const {name,email,password,role_id}=req.body;
     let errors=[];
     
     if(!name || !email || !password){
@@ -34,7 +34,8 @@ const registerUser=async (req,res)=>{
                 const newUser=new User({
                     name,
                     email,
-                    password
+                    password,
+                    role_id
                 });
                 bcrypt.genSalt(10,(err,salt)=>{
                     bcrypt.hash(newUser.password,salt,(err,hash)=>{

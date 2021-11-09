@@ -1,43 +1,31 @@
 import List from "../../../components/CRUD/List";
 import {useState, useEffect,useMemo} from "react";
 import axios from "../../../Request/axios";
-export default function AdminPlayers() {
+export default function AdminRole() {
   const [news, setNews] = useState([]);
   
  useEffect(() => {
-  axios.get("/users").then(res => {
+  axios.get("/roles").then(res => {
     setNews(res.data);
   });
 },[])
-const columns = useMemo(() => 
+const a = useMemo(() => 
 {
   return [
     
     {
-      Header: "Title",
-      accessor: "title",
+      Header: "Name",
+      accessor: "name",
       width: 500,
       filterable: true
     },
     {
-      Header: "Content",
-      accessor: "content",
+      Header: "Display Name",
+      accessor: "display_name",
       width: 500,
       filterable: true
     },
-    {
-      Header: "Image",
-      accessor: "image",
-      width: 500,
-      filterable: true,
-      Cell: props => <img src={props.value} alt="img" width="100" />
-    },
-    {
-      Header: "Creator",
-      accessor: "Creator",
-      width: 500,
-      filterable: true
-    },
+    
     {
       Header: "Action",
       accessor: "",
@@ -65,7 +53,7 @@ const columns = useMemo(() =>
 )
   return (
     <div>
-      <List title="Players" data={news} columns={columns}/>
+      <List title="Roles" data={news} columns={a}/>
     </div>
   );
 }
