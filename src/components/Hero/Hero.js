@@ -11,40 +11,11 @@ export default function Updates() {
               Watch and participate in the competative tournaments and win
               different prizes
             </p>
-
-            <svg
-              className="absolute left-0 max-w-md mt-24 -ml-64 left-svg"
-              viewBox="0 0 423 423"
-              xmlns="http://www.w3.org/2000/svg"
-              xmlnsXlink="http://www.w3.org/1999/xlink"
-            >
-              <g
-                id="Page-1"
-                stroke="none"
-                strokeWidth={1}
-                fill="none"
-                fillRule="evenodd"
-                opacity=".9"
-              >
-                <g id="Desktop-HD" transform="translate(-39 -531)">
-                  <g id="Hero" transform="translate(43 83)">
-                    <g id="Rectangle-6" transform="rotate(45 213 654)">
-                      <use
-                        fill="#000"
-                        filter="url(#filter-3)"
-                        xlinkHref="#path-2"
-                      />
-                      <use fill="url(#linearGradient-1)" xlinkHref="#path-2" />
-                    </g>
-                  </g>
-                </g>
-              </g>
-            </svg>
           </div>
           <div className="relative z-50 flex flex-col items-end justify-center w-full h-full lg:w-1/2 ms:pl-10">
             <div className="container relative left-0 w-full max-w-4xl lg:absolute xl:max-w-6xl lg:w-screen">
               <img
-                src="https://i.stack.imgur.com/zZNgk.png"
+                src="zZNgk.png"
                 className="w-full h-auto mt-20 mb-20 ml-0 lg:mt-24 xl:mt-40 lg:mb-0 lg:h-full lg:-ml-12"
               />
             </div>

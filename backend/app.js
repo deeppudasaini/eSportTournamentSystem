@@ -9,7 +9,9 @@ require('dotenv').config()
 const connectDb=require('./db/connect.js')
 
 const app = express()
+const cors = require('cors');
 
+app.use(cors());
 
 
 // DB config

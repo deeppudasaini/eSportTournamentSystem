@@ -8,10 +8,13 @@ import Team from "./container/Team";
 import Tournament from "./container/Tournament";
 import Login from "./container/Login";
 import Register from "./container/Register";
+import Admin from "./container/Admin/Admin";
 import Navigation from "./components/Navigation/Navigation";
 import Footer from "./components/Footer/Footer";
 import { Fade } from "react-reveal";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
 export default function App() {
   return (
     <div className="App">
@@ -29,6 +32,9 @@ export default function App() {
           </Route>
           <Route path="/tournaments">
             <Tournament />
+          </Route>
+          <Route path="/admin">
+            <Admin />
           </Route>
           <Route path="/streams">
             <Stream />

@@ -6,6 +6,7 @@ export default function Login() {
           <span className="text-2xl font-light">Login to your account</span>
           <div className="relative mt-4 bg-white shadow-md sm:rounded-lg text-left">
             <div className="h-2 bg-indigo-400 rounded-t-md" />
+
             <div className="py-6 px-8">
               <label className="block font-semibold">
                 Email
